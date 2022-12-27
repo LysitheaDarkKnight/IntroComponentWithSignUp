@@ -1,0 +1,255 @@
+@import 'functions';
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
+
+// Colors
+:root{
+    --red-color: hsl(0, 100%, 74%);
+    --green-color: hsl(154, 59%, 51%);
+    --blue-color: hsl(248, 32%, 49%);
+    --dark-blue-color: hsl(249, 10%, 26%);
+    --grayish-blue-color: hsl(246, 25%, 77%);
+}
+
+// Fonts
+$poppins: 'Poppins', sans-serif;
+
+body{
+  font-size: 16px;
+  font-family: $poppins;
+  position: relative;
+}
+
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+
+}
+
+h1{
+    font-size: 3rem;
+    line-height: 1.1;
+    margin-bottom: 2rem;
+}
+
+.success, .error{
+    margin-top: 0.3rem;
+    font-size: 0.7rem;
+    font-weight: 500;
+    text-align: right;
+    font-style: italic;
+}
+
+.success{
+    color: #28a745;
+}
+
+.error{
+    color: var(--red-color);
+}
+
+
+
+
+.background{
+    background: url(../images/bg-intro-desktop.png) var(--red-color);
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 100vh;
+    @include set-flex($align-items: center, $justify-content: center);
+    overflow: hidden;
+    .container{
+        @include set-grid;
+        grid-template-columns: repeat(2, 1fr);
+        width: min(70rem, 90%);
+        gap: 1rem;
+
+        .desc{
+            color: white;
+            align-self: center;
+        }
+
+        .sign-up{
+            .trial, form{
+                border-radius: 0.5rem;
+            }
+            .trial{
+                background-color: var(--blue-color);
+                text-align: center;
+                padding: 1rem;
+                color: var(--grayish-blue-color);
+                margin-bottom: 2rem;
+                box-shadow: 0 0.5rem rgba(201,97,98,255);
+                span{
+                    color: white;
+                    font-weight: 500;
+                }
+            }
+
+            form{
+                background-color: white;
+                padding: 2.4rem;
+                box-shadow: 0 0.5rem rgba(201,97,98,255);
+                .form-group, .btn{
+                    @include set-grid;
+                }
+                .form-group{
+                    padding-bottom: 1.5rem;
+                    position: relative;
+                    .icon{
+                        right: 3rem;
+                        top: 1.8rem;
+                        position: absolute;
+                        z-index: 2;
+                        color: var(--red-color);
+                        display: none;
+                    }
+                    input{
+                        padding: 1.2rem 2rem;
+                        border-radius: 0.25rem;
+                        font-weight: 600;
+                        border: var(--grayish-blue-color) 1px solid;
+
+                        &:focus{
+                            outline: none;
+                            border: var(--dark-blue-color) 1px solid;
+                        }
+                    }
+                }
+
+                .btn{
+                    .submit{
+                    cursor: pointer;
+                    padding: 1.2rem;
+                    background-color: var(--green-color);
+                    border: var(--green-color) 1px solid;
+                    border-radius: 0.25rem;
+                    font-size: 1rem;
+                    color: white;
+                    font-weight: 600;
+                    letter-spacing: 1.1px;
+                    box-shadow: 0 0.2rem #00a367;
+                    transition: 0.5s;
+                    &:hover{
+                        background-color: #41F0A4;
+                        box-shadow: 0 0.2rem var(--green-color);
+                    }
+                    }
+                }
+
+                .terms-and-services{
+                    margin-top: 1rem;
+                    font-size: 0.7rem;
+                    text-align: center;
+                    color: var(--grayish-blue-color);
+                    a{
+                        text-decoration: none;
+                        color: var(--red-color);
+                        font-weight: 600;
+                    }
+                }
+            }
+        }
+    }
+}
+
+@media(max-width: 790px){
+    .background{
+        background: url(../images/bg-intro-mobile.png) var(--red-color);
+        background-repeat: no-repeat;
+        background-size: cover;
+        height: 100%;
+        .container{
+            grid-template-columns: auto;
+            width: min(70rem, 90%);
+            gap: 3rem;
+            padding: 7rem 0;
+            margin: auto;
+            .desc{
+                color: white;
+                align-self: center;
+                h1, p{
+                    text-align: center;
+                }
+
+                h1{
+                    font-size: 2rem;
+                }
+            }
+    
+            .sign-up{
+                .trial, form{
+                    border-radius: 0.5rem;
+                }
+                .trial{
+                    background-color: var(--blue-color);
+                    text-align: center;
+                    padding: 1rem;
+                    color: var(--grayish-blue-color);
+                    margin-bottom: 2rem;
+                    box-shadow: 0 0.5rem rgba(201,97,98,255);
+                    span{
+                        color: white;
+                        font-weight: 500;
+                    }
+                }
+    
+                form{
+                    background-color: white;
+                    padding: 2.4rem;
+                    box-shadow: 0 0.5rem rgba(201,97,98,255);
+                    .form-group, .btn{
+                        @include set-grid;
+                    }
+                    .form-group{
+                        padding-bottom: 1.5rem;
+                        input{
+                            padding: 1.2rem 2rem;
+                            border-radius: 0.25rem;
+                            font-weight: 600;
+                            border: var(--grayish-blue-color) 1px solid;
+    
+                            &:focus{
+                                outline: none;
+                                border: var(--dark-blue-color) 1px solid;
+                            }
+                        }
+                    }
+    
+                    .btn{
+                        .submit{
+                        cursor: pointer;
+                        padding: 1.2rem;
+                        background-color: var(--green-color);
+                        border: var(--green-color) 1px solid;
+                        border-radius: 0.25rem;
+                        font-size: 1rem;
+                        color: white;
+                        font-weight: 600;
+                        letter-spacing: 1.1px;
+                        box-shadow: 0 0.2rem #00a367;
+                        transition: 0.5s;
+                        &:hover{
+                            background-color: #41F0A4;
+                            box-shadow: 0 0.2rem var(--green-color);
+                        }
+                        }
+                    }
+    
+                    .terms-and-services{
+                        margin-top: 1rem;
+                        font-size: 0.7rem;
+                        text-align: center;
+                        color: var(--grayish-blue-color);
+                        a{
+                            text-decoration: none;
+                            color: var(--red-color);
+                            font-weight: 600;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
